@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model relatorio {
+  id                             String @id @default(auto()) @map("_id") @db.ObjectId
+  abates                         Int
+  ano                            Int
+  aquisicoes                     Int
+  ate                            String
+  categoria_de_atividade         String
+  classe                         String
+  cnpj                           String
+  codigo_da_categoria            Int
+  codigo_do_detalhe              Int
+  detalhe                        String
+  estado                         String
+  evasoes                        Int
+  femeas_plantel_anterior        Int
+  femeas_plantel_atual           Int
+  furtos_roubos                  Int
+  indeterminado_plantel_anterior Int
+  indeterminado_plantel_atual    Int
+  machos_plantel_anterior        Int
+  machos_plantel_atual           Int
+  municipio                      String
+  nascimentos                    Int
+  nome_cientifico                String
+  nome_popular                   String
+  obitos                         Int
+  ordem                          String
+  periodo                        String
+  razao_social                   String
+  reintegracao_solturas          Int
+  retificadora                   String
+  situacao_cadastral             String
+  total                          Int
+  total_de_entradas              Int
+  total_de_saidas                Int
+  total_geral                    Int
+  transferencia_entradas         Int
+  transferencia_saidas           Int
+  vendas                         Int
+}
