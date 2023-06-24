@@ -1,22 +1,76 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import RelatorioService from "../services/RelatorioService";
 
 export default {
-  async getSergipe(req: Request, res: Response) {
+  async getCountSergipe(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
     try {
-      const se = await prisma.relatorio.findMany({
-        where: {
-          estado: 'SERGIPE',
-          ano: 2020,
-          municipio: 'ARACAJU'
-        }
-      });
-  
-      return res.json(se);
+      const qtdSergipe = await relatorio.getCountSergipe(); 
+      return res.json(qtdSergipe);
     } catch (e: any) {
-      return res.json({ error: e.message });
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getCountSergipeByPeriod(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const { ano_inicio, ano_fim } = req.query;
+      const qtdSergipe = await relatorio.getCountSergipeByPeriod(Number(ano_inicio), Number(ano_fim)); 
+
+      if (Object.keys(relatorio.errors).length) {
+        return res.status(400).send({ error: relatorio.errors['invalidYear'].message });
+      }
+
+      return res.json(qtdSergipe);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getCountActive(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const ativas = await relatorio.getCountActive(); 
+      return res.json(ativas);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getClasses(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const classes = await relatorio.getClasses(); 
+      return res.json(classes);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getEstados(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const estados = await relatorio.getEstados(); 
+      return res.json(estados);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getMunicipios(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const municipios = await relatorio.getMunicipios(); 
+      return res.json(municipios);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
     }
   }
 }
