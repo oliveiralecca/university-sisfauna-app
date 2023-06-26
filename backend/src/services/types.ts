@@ -18,5 +18,7 @@ export interface IRelatorioService {
 
   getNomesPopulares(): void;
 
-  getActivities(): void;
+  getActivity(): void;
+
+  getDetails(): void;
 }

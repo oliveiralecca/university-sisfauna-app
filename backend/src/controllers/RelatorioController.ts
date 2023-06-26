@@ -85,12 +85,12 @@ export default {
     }
   },
 
-  async getActivities(req: Request, res: Response) {
+  async getActivity(req: Request, res: Response) {
     const relatorio = new RelatorioService();
 
     try {
-      const activities = await relatorio.getActivities(); 
-      return res.json(activities);
+      const activity = await relatorio.getActivity(); 
+      return res.json(activity);
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }

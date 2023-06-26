@@ -156,7 +156,7 @@ class RelatorioService implements IRelatorioService {
     }
   }
 
-  async getActivities() {
+  async getActivity() {
     try {
       const result = await prisma.relatorio.groupBy({
         by: ['categoria_de_atividade'],
@@ -183,6 +183,10 @@ class RelatorioService implements IRelatorioService {
     } finally {
       await prisma.$disconnect();
     }
+  }
+
+  async getDetails() {
+
   }
 }
 
