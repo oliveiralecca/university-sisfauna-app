@@ -17,4 +17,6 @@ export interface IRelatorioService {
   getMunicipios(): void;
 
   getNomesPopulares(): void;
+
+  getActivities(): void;
 }

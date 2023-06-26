@@ -83,5 +83,16 @@ export default {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async getActivities(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const activities = await relatorio.getActivities(); 
+      return res.json(activities);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }

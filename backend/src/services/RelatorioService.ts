@@ -155,6 +155,35 @@ class RelatorioService implements IRelatorioService {
       await prisma.$disconnect();
     }
   }
+
+  async getActivities() {
+    try {
+      const result = await prisma.relatorio.groupBy({
+        by: ['categoria_de_atividade'],
+        _count: {
+          categoria_de_atividade: true
+        },
+        orderBy: {
+          _count: {
+            categoria_de_atividade: 'desc'
+          }
+        },
+        take: 1
+      });
+
+      const categoria = result[0].categoria_de_atividade;
+      const total = result[0]._count.categoria_de_atividade;
+
+      return {
+        categoria,
+        total
+      };
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
 }
 
 export default RelatorioService;
