@@ -72,5 +72,16 @@ export default {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async getNomesPopulares(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const nomesPopulares = await relatorio.getNomesPopulares(); 
+      return res.json(nomesPopulares);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }

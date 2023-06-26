@@ -15,4 +15,6 @@ export interface IRelatorioService {
   getEstados(): void;
 
   getMunicipios(): void;
+
+  getNomesPopulares(): void;
 }

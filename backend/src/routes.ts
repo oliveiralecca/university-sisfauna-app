@@ -16,4 +16,6 @@ routes.get(`${BASE_URL_V1}/estados`, RelatorioController.getEstados);
 
 routes.get(`${BASE_URL_V1}/municipios`, RelatorioController.getMunicipios);
 
+routes.get(`${BASE_URL_V1}/nomespopulares`, RelatorioController.getNomesPopulares);
+
 export default routes;

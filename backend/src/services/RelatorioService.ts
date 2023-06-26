@@ -135,6 +135,26 @@ class RelatorioService implements IRelatorioService {
       await prisma.$disconnect();
     }
   }
+
+  async getNomesPopulares() {
+    try {
+      const nomesPopulares: string[] = [];
+      const result = await prisma.relatorio.findMany({
+        select: {
+          nome_popular: true,
+        },
+        distinct: ['nome_popular']
+      });
+
+      result.filter((item) =>  item.nome_popular !== 'não consta').forEach((item) => nomesPopulares.push(item.nome_popular));
+
+      return nomesPopulares;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
 }
 
 export default RelatorioService;
