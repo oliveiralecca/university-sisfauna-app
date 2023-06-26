@@ -23,4 +23,6 @@ export interface IRelatorioService {
   getDetails(): void;
 
   get50Obitos(): void;
+
+  getOrdemAnimal(): void;
 }

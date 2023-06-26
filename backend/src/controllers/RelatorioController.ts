@@ -116,5 +116,16 @@ export default {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async getOrdemAnimal(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const ordemAnimal = await relatorio.getOrdemAnimal(); 
+      return res.json(ordemAnimal);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }

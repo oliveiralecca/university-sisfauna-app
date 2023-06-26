@@ -24,4 +24,6 @@ routes.get(`${BASE_URL_V1}/detalhes`, RelatorioController.getDetails);
 
 routes.get(`${BASE_URL_V1}/50obitos`, RelatorioController.get50Obitos);
 
+routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
+
 export default routes;

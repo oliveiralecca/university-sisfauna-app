@@ -231,6 +231,34 @@ class RelatorioService implements IRelatorioService {
       await prisma.$disconnect();
     }
   }
+
+  async getOrdemAnimal() {
+    try {
+      const ordemEncontrada: { _id: string; count: number; }[] = [];
+      const result = await prisma.relatorio.aggregateRaw({
+        pipeline: [
+          { $group: { _id: '$ordem', count: { $sum: 1 } } },
+          { $sort: { count: -1 } },
+          { $limit: 1 },
+        ],
+        options: { allowDiskUse: true }
+      });
+
+      ordemEncontrada.push(result[0] as { _id: string; count: number; });
+
+      const ordem = ordemEncontrada[0]._id;
+      const total = ordemEncontrada[0].count;
+
+      return {
+        ordem,
+        total
+      };
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
 }
 
 export default RelatorioService;
