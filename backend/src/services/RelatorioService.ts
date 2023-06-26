@@ -186,7 +186,24 @@ class RelatorioService implements IRelatorioService {
   }
 
   async getDetails() {
+    try {
+      const detalhes: {id: number; detalhe: string}[] = [];
+      const result = await prisma.relatorio.findMany({
+        select: {
+          detalhe: true,
+        },
+        distinct: ['detalhe']
+      });
 
+      let id = 0;
+      result.forEach((item) => detalhes.push({ id: id++, detalhe: item.detalhe }));
+
+      return detalhes;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
   }
 }
 

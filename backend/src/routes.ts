@@ -20,4 +20,6 @@ routes.get(`${BASE_URL_V1}/nomespopulares`, RelatorioController.getNomesPopulare
 
 routes.get(`${BASE_URL_V1}/atividade`, RelatorioController.getActivity);
 
+routes.get(`${BASE_URL_V1}/detalhes`, RelatorioController.getDetails);
+
 export default routes;

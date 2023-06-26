@@ -94,5 +94,16 @@ export default {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async getDetails(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const details = await relatorio.getDetails(); 
+      return res.json(details);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }
