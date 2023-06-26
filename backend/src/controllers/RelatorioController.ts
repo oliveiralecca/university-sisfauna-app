@@ -105,5 +105,16 @@ export default {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async get50Obitos(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const obitos = await relatorio.get50Obitos(); 
+      return res.json(obitos);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }

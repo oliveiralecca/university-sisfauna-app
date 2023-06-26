@@ -21,4 +21,6 @@ export interface IRelatorioService {
   getActivity(): void;
 
   getDetails(): void;
+
+  get50Obitos(): void;
 }

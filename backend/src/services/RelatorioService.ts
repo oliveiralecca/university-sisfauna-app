@@ -205,6 +205,32 @@ class RelatorioService implements IRelatorioService {
       await prisma.$disconnect();
     }
   }
+
+  async get50Obitos() {
+    try {
+      const nomesPopulares: {id: number; nome_popular: string}[] = [];
+      const result = await prisma.relatorio.groupBy({
+        by: ['nome_popular'],
+        where: {
+          obitos: {
+            equals: 50
+          },
+          nome_popular: {
+            not: 'não consta'
+          }
+        }
+      });
+
+      let id = 0;
+      result.forEach((item) => nomesPopulares.push({ id: id++, nome_popular: item.nome_popular }));
+
+      return nomesPopulares;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
 }
 
 export default RelatorioService;
