@@ -172,11 +172,11 @@ class RelatorioService implements IRelatorioService {
       });
 
       const categoria = result[0].categoria_de_atividade;
-      const total = result[0]._count.categoria_de_atividade;
+      const count = result[0]._count.categoria_de_atividade;
 
       return {
         categoria,
-        total
+        count
       };
     } catch (e) {
       console.error(e);
