@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { ReactNode, useState } from "react";
 import "./Answers.css"
 
 interface AnswersProps {
-  resposta: string[] | null;
+  resposta: ReactNode; // passei esse tipo pq aceita tudo quanto é tipo de coisa, se parar o mouse em cima dele, verás que ele aceita string, number, boolean, outro nó, etc.
 }
 
 const Answers: React.FC<AnswersProps> = ({ resposta }) => {

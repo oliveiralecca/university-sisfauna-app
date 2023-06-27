@@ -3,13 +3,17 @@ import Questions from "./components/Questions/Questions";
 import { useFetch } from "./hooks/useFetch";
 import Answers from "./components/Answers/Answers";
 
+type ObjectResponse = {
+  [key: string]: string[];
+} & { count: number; }
+
 function App() {
-  const { data: classes } = useFetch<string[]>("http://localhost:3333/api/v1/classes");
-  const { data: ativas } = useFetch<string[]>("http://localhost:3333/api/v1/ativas");
-  const { data: sergipe } = useFetch<string[]>("http://localhost:3333/api/v1/sergipe");
-  //const { data: municipio } = useFetch<string[]>("http://localhost:3333/api/v1/municipios");
-  const { data: estados } = useFetch<string[]>("http://localhost:3333/api/v1/estados");
-  const { data: nomePopulares } = useFetch<string[]>("http://localhost:3333/api/v1/nomespopulares");
+  const { data: classes } = useFetch<string[]>("/classes"); // array
+  const { data: ativas } = useFetch<number>("/ativas"); // number
+  const { data: sergipe } = useFetch<number>("/sergipe"); // number
+  const { data: municipios } = useFetch<ObjectResponse>("/municipios"); // count: number, municipios: array
+  const { data: estados } = useFetch<string[]>("/estados"); // array
+  const { data: nomePopulares } = useFetch<string[]>("/nomespopulares"); // array
   //const { data: atividade } = useFetch<string[]>("http://localhost:3333/api/v1/atividade");
   //const { data: detalhes } = useFetch<string[]>("http://localhost:3333/api/v1/detalhes");
   //const { data: obitos } = useFetch<string[]>("http://localhost:3333/api/v1/obitos");
@@ -32,7 +36,14 @@ function App() {
         <Answers resposta={estados} />
 
         <Questions pergunta="5° Liste todos os Municípios presentes no banco de dados, e a quantidade total dos mesmos." />
-        <Answers resposta={ativas} />
+        <Answers resposta={
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div>
+              {municipios?.municipios.map((municipio: string) => <span>{municipio}</span>)}
+            </div>
+            <span>{municipios?.count}</span>
+          </div>
+        } />
 
         <Questions pergunta="6º Liste o nome popular de todos os animais presentes na Sisfauna." />
         <Answers resposta={nomePopulares} />
