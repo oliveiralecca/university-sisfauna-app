@@ -29,9 +29,32 @@
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 4px;
+  margin-bottom: 12px;
   cursor: pointer;
 }
 
 .answer button:hover {
   background-color: #0056b3;
 }
+
+
+/* Answer 5 */
+.city-list-container {
+  height: 250px; 
+  overflow-y: auto; 
+}
+
+.city-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px;
+  list-style: none;
+}
+
+/* Answer 8 */
+.details {
+  text-align: left;
+  margin: 2px 16px;
+}
+
+
