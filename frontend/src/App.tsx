@@ -7,6 +7,15 @@ type ObjectResponse = {
   [key: string]: string[];
 } & { count: number; }
 
+type ObjectArrayResponse = {
+  [key: string]: string;
+} & { id: number;}
+
+type OrdemResponse = {
+  ordem: string;
+  total: number;
+}
+
 function App() {
   const { data: classes } = useFetch<string[]>("/classes"); // array
   const { data: ativas } = useFetch<number>("/ativas"); // number
@@ -14,10 +23,10 @@ function App() {
   const { data: municipios } = useFetch<ObjectResponse>("/municipios"); // count: number, municipios: array
   const { data: estados } = useFetch<string[]>("/estados"); // array
   const { data: nomePopulares } = useFetch<string[]>("/nomespopulares"); // array
-  //const { data: atividade } = useFetch<string[]>("http://localhost:3333/api/v1/atividade");
-  //const { data: detalhes } = useFetch<string[]>("http://localhost:3333/api/v1/detalhes");
-  //const { data: obitos } = useFetch<string[]>("http://localhost:3333/api/v1/obitos");
-  //const { data: ordemAnimal } = useFetch<string[]>("http://localhost:3333/api/v1/ordemanimal");
+  const { data: atividade } = useFetch<ObjectResponse>("/atividade");
+  const { data: detalhes } = useFetch<ObjectArrayResponse[]>("/detalhes");
+  const { data: obitos } = useFetch<ObjectArrayResponse[]>("/50obitos");
+  const { data: ordemAnimal } = useFetch<OrdemResponse>("/ordemanimal");
 
   return (
     <>
@@ -49,16 +58,34 @@ function App() {
         <Answers resposta={nomePopulares} />
 
         <Questions pergunta="7º Qual a Categoria de Atividade que mais se repete e o total dessa Categoria?" />
-        <Answers resposta={nomePopulares} />
+        <Answers resposta={
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span>{atividade?.categoria}</span>
+            <span>{atividade?.count}</span>
+          </div>
+        } />
 
         <Questions pergunta="8º Quais são os detalhes informados?" />
-        <Answers resposta={ativas} />
+        <Answers resposta={
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {detalhes?.map((detalhe: ObjectArrayResponse ) => <span>{detalhe.detalhe}</span>)}
+          </div>
+        } />
 
         <Questions pergunta="9º Qual o nome, ou os nomes Populares dos animais que tiveram óbitos igual a 50?" />
-        <Answers resposta={ativas} />
+        <Answers resposta={
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {obitos?.map((obito: ObjectArrayResponse ) => <span>{obito.nome_popular}</span>)}
+          </div>
+        } />
 
         <Questions pergunta="10º Qual a Ordem de animal que mais se repete e o total deste item?" />
-        <Answers resposta={ativas} />
+        <Answers resposta={
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span>{ordemAnimal?.ordem}</span>
+            <span>{ordemAnimal?.total}</span>
+          </div>
+        } />
       </div>
     </>
   );
