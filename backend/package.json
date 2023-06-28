@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev:server": "nodemon src/index.ts",
-    "build": "tsup src",
+    "build": "yarn && tsup src && npx prisma generate",
     "start": "node index.js"
   },
   "devDependencies": {
