@@ -13,13 +13,17 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-try {
-  prisma.$connect();
+const connectDB = async () => {
+  try {
+    await prisma.$connect();
+    console.info('Conectado ao banco de dados');
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+connectDB().then(() => {
   app.listen(PORT, () => {
-    console.info('Aplicação rodando em http://localhost:3333')
+    console.info(`Aplicação rodando na porta ${PORT}`)
   });
-} catch (e) {
-  console.error(e);
-}
-
-
+});
