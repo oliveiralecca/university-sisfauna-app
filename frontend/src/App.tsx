@@ -15,7 +15,7 @@ type ObjectArrayResponse = {
 type OrdemResponse = {
   ordem: string;
   total: number;
-}
+};
 
 interface IState {
   sergipe?: number;
@@ -153,11 +153,17 @@ function App() {
         />
 
         <Questions pergunta="9º Qual o nome, ou os nomes Populares dos animais que tiveram óbitos igual a 50?" />
-        {/* <Answers resposta={
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {obitos?.map((obito: ObjectArrayResponse ) => <span>{obito.nome_popular}</span>)}
-          </div>
-        } /> */}
+        <Answers onClick={() => handleFetchData<ObjectArrayResponse[]>("/50obitos")}
+          resposta={
+            <div className="deads-container-list">
+              <ul className="deads-list">
+                {data?.obitos?.map((obito: ObjectArrayResponse) => (
+                  <li>{obito.nome_popular}</li>
+                ))}
+              </ul>
+            </div>
+          }
+        />
 
         <Questions pergunta="10º Qual a Ordem de animal que mais se repete e o total deste item?" />
         <Answers
