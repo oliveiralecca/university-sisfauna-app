@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev:server": "nodemon src/index.ts",
-    "build": "tsup src",
+    "build": "npm i && tsup src",
     "start": "node dist/index.js"
   },
   "devDependencies": {
