@@ -9,7 +9,7 @@
   "scripts": {
     "dev:server": "nodemon src/index.ts",
     "build": "yarn && tsup src && npx prisma generate",
-    "start": "node index.js"
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
