@@ -5,5 +5,3 @@ const api = axios.create({
 })
 
 export default api;
-
-// esse arquivo é pra setar a url base da api, e não precisar ficar passando ela completa em todas as requisições, apenas os endpoints

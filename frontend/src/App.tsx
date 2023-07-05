@@ -41,7 +41,6 @@ function App() {
         ...data,
         [`${endpoint.slice(1)}`]: response.data,
       });
-    console.log(response.data);
   }
 
   return (
@@ -140,12 +139,12 @@ function App() {
 
         <Questions pergunta="9º Qual o nome, ou os nomes Populares dos animais que tiveram óbitos igual a 50?" />
         <Answers
-          onClick={() => handleFetchData<ObjectArrayResponse[]>("/50obitos")}
+          onClick={() => handleFetchData<ObjectArrayResponse[]>("/obitos")}
           resposta={
             <div className="deads-container-list">
               <ul className="deads-list">
-                {data?.obitos?.map((obito: ObjectArrayResponse) => (
-                  <li>{obito.nome_popular}</li>
+                {data?.obitos?.map((obito: ObjectArrayResponse, index: number) => (
+                  <li key={index}>{obito.nome_popular}</li>
                 ))}
               </ul>
             </div>

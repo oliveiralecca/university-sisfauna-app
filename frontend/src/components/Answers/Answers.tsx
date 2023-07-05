@@ -23,7 +23,7 @@ const Answers: React.FC<AnswersProps> = ({ resposta, onClick }) => {
     <div className="answer sweet-loading">
       {mostrarResposta ? <button onClick={handleClose}>Fechar</button> : <button onClick={handleOpen}>Mostrar Resposta</button>}
 
-      {mostrarResposta && <p>Resposta: {resposta}</p>}
+      {mostrarResposta && <div className="data">Resposta: {resposta}</div>}
     </div>
   );
 };
