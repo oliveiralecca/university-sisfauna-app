@@ -16,6 +16,9 @@ type OrdemResponse = {
   ordem: string;
   total: number;
 };
+type Loading = {
+  isLoading: boolean;
+};
 
 interface IState {
   sergipe?: number;
@@ -30,17 +33,47 @@ interface IState {
   ordemAnimal?: OrdemResponse;
 }
 
+interface ILoading {
+  sergipe: Loading;
+  ativas: Loading;
+  classes: Loading;
+  estados: Loading;
+  municipios: Loading;
+  nomesPopulares: Loading;
+  atividade: Loading;
+  detalhes: Loading;
+  obitos: Loading;
+  ordemAnimal: Loading;
+}
+
 function App() {
   const [data, setData] = useState<IState | null>(null);
+  const [loading, setLoading] = useState<ILoading>({
+    sergipe: { isLoading: true },
+    ativas: { isLoading: true },
+    classes: { isLoading: true },
+    estados: { isLoading: true },
+    municipios: { isLoading: true },
+    nomesPopulares: { isLoading: true },
+    atividade: { isLoading: true },
+    detalhes: { isLoading: true },
+    obitos: { isLoading: true },
+    ordemAnimal: { isLoading: true },
+  });
 
   async function handleFetchData<T>(endpoint: string) {
     const response = await api.get<T>(endpoint);
-    
-    if (response)
+
+    if (response) {
       setData({
         ...data,
         [`${endpoint.slice(1)}`]: response.data,
       });
+      setLoading({
+        ...loading,
+        [`${endpoint.slice(1)}`]: { isLoading: false },
+      });
+    }
   }
 
   return (
@@ -48,10 +81,10 @@ function App() {
       <h1>University Sisfauna App</h1>
       <div className="card">
         <Questions pergunta="1º Quantas pessoas jurídicas entregaram o Relatório de Atividades PotencialmentePoluidoras (RAPP) no estado de Sergipe?" />
-        <Answers onClick={() => handleFetchData<number>("/sergipe")} resposta={data?.sergipe} />
+        <Answers onClick={() => handleFetchData<number>("/sergipe")} resposta={data?.sergipe} isLoading={loading?.sergipe?.isLoading} />
 
         <Questions pergunta="2º Qual a quantidade da Situação Cadastral Ativa?" />
-        <Answers onClick={() => handleFetchData<number>("/ativas")} resposta={data?.ativas} />
+        <Answers onClick={() => handleFetchData<number>("/ativas")} resposta={data?.ativas} isLoading={loading?.ativas?.isLoading} />
 
         <Questions pergunta="3º Apresente quais são as Classes dos animais presentes no BD?" />
         <Answers
@@ -65,6 +98,7 @@ function App() {
               </ul>
             </div>
           }
+          isLoading={loading?.classes?.isLoading}
         />
 
         <Questions pergunta="4º Quais os Estados que fazem parte do Sisfauna?" />
@@ -79,6 +113,7 @@ function App() {
               </ul>
             </div>
           }
+          isLoading={loading?.estados?.isLoading}
         />
 
         <Questions pergunta="5° Liste todos os Municípios presentes no banco de dados, e a quantidade total dos mesmos." />
@@ -96,6 +131,7 @@ function App() {
               <span>{data?.municipios?.count}</span>
             </div>
           }
+          isLoading={loading?.municipios?.isLoading}
         />
 
         <Questions pergunta="6º Liste o nome popular de todos os animais presentes na Sisfauna." />
@@ -110,6 +146,7 @@ function App() {
               </ul>
             </div>
           }
+          isLoading={loading?.nomesPopulares?.isLoading}
         />
 
         <Questions pergunta="7º Qual a Categoria de Atividade que mais se repete e o total dessa Categoria?" />
@@ -121,6 +158,7 @@ function App() {
               <span>Total: {data?.atividade?.count}</span>
             </div>
           }
+          isLoading={loading?.atividade?.isLoading}
         />
 
         <Questions pergunta="8º Quais são os detalhes informados?" />
@@ -135,6 +173,7 @@ function App() {
               ))}
             </div>
           }
+          isLoading={loading?.detalhes?.isLoading}
         />
 
         <Questions pergunta="9º Qual o nome, ou os nomes Populares dos animais que tiveram óbitos igual a 50?" />
@@ -149,6 +188,7 @@ function App() {
               </ul>
             </div>
           }
+          isLoading={loading?.obitos?.isLoading}
         />
 
         <Questions pergunta="10º Qual a Ordem de animal que mais se repete e o total deste item?" />
@@ -160,6 +200,7 @@ function App() {
               <span>Total: {data?.ordemAnimal?.total}</span>
             </div>
           }
+          isLoading={loading?.ordemAnimal?.isLoading}
         />
       </div>
     </>
