@@ -1,5 +1,5 @@
 .answer {
-  background-color: #1aa395;
+  background-color: #ffffff;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid black;
@@ -23,7 +23,7 @@
 
 
 .answer button {
-  background-color: #007bff;
+  background-color: #9563e5;
   color: #ffffff;
   border: none;
   padding: 8px 16px;
@@ -34,7 +34,7 @@
 }
 
 .answer button:hover {
-  background-color: #0056b3;
+  background-color: #8051cb;
 }
 
 

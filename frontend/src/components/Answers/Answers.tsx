@@ -32,7 +32,7 @@ const Answers: React.FC<AnswersProps> = ({ resposta, onClick, isLoading }) => {
     <div className="answer sweet-loading">
       <div>
         {mostrarResposta ? <button onClick={handleClose}>Fechar</button> : <button onClick={handleOpen}>Mostrar Resposta</button>}
-        {mostrarResposta && isLoading ? <FadeLoader cssOverride={override} width={5} color={"white"} aria-label="Loading Spinner" data-testid="loader" /> : null}
+        {mostrarResposta && isLoading ? <FadeLoader cssOverride={override} width={5} color={"#b948f6"} aria-label="Loading Spinner" data-testid="loader" /> : null}
         {!isLoading && mostrarResposta && <div className="data">Resposta:{resposta} </div>}
       </div>
     </div>
