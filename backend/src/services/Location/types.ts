@@ -1,3 +1,3 @@
 export interface ILocationService {
-  getClientLocation(clientIp?: string): void;
+  getClientLocation(clientIp: string | null): void;
 }

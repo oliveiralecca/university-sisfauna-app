@@ -11,7 +11,7 @@ export class LocationService implements ILocationService {
     this.errors = {};
   }
 
-  async getClientLocation(clientIp?: string) {
+  async getClientLocation(clientIp: string | null) {
     try {
       if (!clientIp) {
         this.errors['invalidIp'] = {
