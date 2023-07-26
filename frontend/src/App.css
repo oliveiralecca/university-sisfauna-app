@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: #a5d1f8;
+  background-color: #e8e8e8;
 }
 
 .logo {
@@ -45,4 +45,11 @@
 
 .read-the-docs {
   color: #888;
+}
+
+@media screen and (max-width:768px) {
+  .card {
+    
+    padding: 0;
+  }
 }
