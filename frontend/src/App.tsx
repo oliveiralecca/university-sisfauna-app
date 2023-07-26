@@ -64,7 +64,8 @@ function App() {
   async function handleFetchData<T>(endpoint: string) {
     const response = await api.get<T>(`/api/v1${endpoint}`);
 
-    if (endpoint === 'sergipe') {
+    // chamar esse post na função de login quando implementada
+    if (endpoint === '/sergipe') {
       const location = await api.post('/api/v2/location');
       console.log(location.data);
     }
