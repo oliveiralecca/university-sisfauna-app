@@ -10,14 +10,18 @@ export const LocationController = {
       const ip = getClientIp(req);
       const clientLocation = await location.getClientLocation(ip); 
 
-      if (Object.keys(location.errors).length) {
+      if (Object.keys(location.errors).length && location.errors['invalidIp']) {
         return res.status(400).send({ error: location.errors['invalidIp'].message });
       }
 
       const registerLocation = await location.postClientLocation(clientLocation);
 
-      if (Object.keys(location.errors).length) {
+      if (Object.keys(location.errors).length && location.errors['invalidLocation']) {
         return res.status(400).send({ error: location.errors['invalidLocation'].message });
+      }
+
+      if (Object.keys(location.errors).length && location.errors['existentLocation']) {
+        return res.status(400).send({ error: location.errors['existentLocation'].message });
       }
 
       return res.json(registerLocation);

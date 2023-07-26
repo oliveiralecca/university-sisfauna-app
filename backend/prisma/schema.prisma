@@ -77,4 +77,5 @@ model location {
   country_population             Int
   asn                            String
   org                            String
+  error                          Boolean?
 }

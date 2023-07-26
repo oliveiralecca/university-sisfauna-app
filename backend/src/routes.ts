@@ -30,7 +30,7 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
-// chamar essa rota no front ao fazer login
+// chamar essa rota no front ao fazer login (apenas no primeiro login ou checar se o ip já existe no banco)
 routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
 
 export { routes };

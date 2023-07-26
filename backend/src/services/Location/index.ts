@@ -27,9 +27,22 @@ export class LocationService implements ILocationService {
 
   async postClientLocation(clientLocation: Prisma.locationCreateInput | undefined): Promise<location | string | undefined> {
     try {
-      if (!clientLocation) {
+      if (!clientLocation || clientLocation.error) {
         this.errors['invalidLocation'] = {
           message: 'Dados de localização inválidos'
+        };
+        return;
+      }
+
+      const locationExists = await prisma.location.findFirst({
+        where: {
+          ip: clientLocation.ip
+        }
+      });
+
+      if (locationExists) {
+        this.errors['existentLocation'] = {
+          message: 'Localização já registrada'
         };
         return;
       }
@@ -37,10 +50,6 @@ export class LocationService implements ILocationService {
       const register = await prisma.location.create({
         data: clientLocation
       });
-
-      if (!register) {
-        return 'Não foi possível registrar a localização';
-      }
 
       return register;
     } catch (e) {
