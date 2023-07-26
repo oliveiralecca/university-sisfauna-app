@@ -1,9 +1,10 @@
-import { IErrors, IRelatorioService } from "./types";
+import { IErrors } from "../types";
+import { IRelatorioService } from "./types";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-class RelatorioService implements IRelatorioService {
+export class RelatorioService implements IRelatorioService {
   errors: IErrors;
 
   constructor() {
@@ -260,5 +261,3 @@ class RelatorioService implements IRelatorioService {
     }
   }
 }
-
-export default RelatorioService;

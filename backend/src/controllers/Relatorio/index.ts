@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import RelatorioService from "../services/RelatorioService";
+import { RelatorioService } from "../../services/Relatorio";
 
-export default {
+export const RelatorioController = {
   async getCountSergipe(req: Request, res: Response) {
     const relatorio = new RelatorioService();
 

@@ -1,5 +1,6 @@
 import { Router } from "express";
-import RelatorioController from "./controllers/RelatorioController";
+import { RelatorioController } from "./controllers/Relatorio";
+import { LocationController } from "./controllers/Location";
 
 const routes = Router();
 
@@ -26,4 +27,9 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
-export default routes;
+const BASE_URL_V2 = '/api/v2';
+
+// test route
+routes.get(`${BASE_URL_V2}/location`, LocationController.getClientLocation);
+
+export { routes };
