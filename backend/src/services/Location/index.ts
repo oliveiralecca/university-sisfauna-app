@@ -1,6 +1,6 @@
 import { IErrors } from "../types";
 import { ILocationService } from "./types";
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient, location } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -22,6 +22,31 @@ export class LocationService implements ILocationService {
       return (await fetch(`https://ipapi.co/${clientIp}/json/`)).json();
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  async postClientLocation(clientLocation: Prisma.locationCreateInput | undefined): Promise<location | string | undefined> {
+    try {
+      if (!clientLocation) {
+        this.errors['invalidLocation'] = {
+          message: 'Dados de localização inválidos'
+        };
+        return;
+      }
+      
+      const register = await prisma.location.create({
+        data: clientLocation
+      });
+
+      if (!register) {
+        return 'Não foi possível registrar a localização';
+      }
+
+      return register;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
     }
   }
 }

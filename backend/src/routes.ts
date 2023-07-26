@@ -30,7 +30,7 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
-// test route
-routes.get(`${BASE_URL_V2}/location`, LocationController.getClientLocation);
+// chamar essa rota no front ao fazer login
+routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
 
 export { routes };
