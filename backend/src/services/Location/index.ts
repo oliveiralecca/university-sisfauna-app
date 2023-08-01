@@ -1,6 +1,6 @@
 import { IErrors } from "../types";
 import { ILocationService } from "./types";
-import { Prisma, PrismaClient, location } from "@prisma/client";
+import { Prisma, PrismaClient, locations } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -25,7 +25,7 @@ export class LocationService implements ILocationService {
     }
   }
 
-  async postClientLocation(clientLocation: Prisma.locationCreateInput | undefined): Promise<location | string | undefined> {
+  async postClientLocation(clientLocation: Prisma.locationsCreateInput | undefined): Promise<locations | string | undefined> {
     try {
       if (!clientLocation || clientLocation.error) {
         this.errors['invalidLocation'] = {
@@ -34,7 +34,7 @@ export class LocationService implements ILocationService {
         return;
       }
 
-      const locationExists = await prisma.location.findFirst({
+      const locationExists = await prisma.locations.findFirst({
         where: {
           ip: clientLocation.ip
         }
@@ -47,7 +47,7 @@ export class LocationService implements ILocationService {
         return;
       }
       
-      const register = await prisma.location.create({
+      const register = await prisma.locations.create({
         data: clientLocation
       });
 

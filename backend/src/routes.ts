@@ -3,12 +3,14 @@ import { RelatorioController } from "./controllers/Relatorio";
 import { LocationController } from "./controllers/Location";
 
 import { getClientIp } from 'request-ip';
+import { AuthController } from "./controllers/Auth";
 
 const routes = Router();
 
 const BASE_URL_V1 = '/api/v1';
 const BASE_URL_V2 = '/api/v2';
 
+/* V1 Routes */
 routes.get(`${BASE_URL_V1}/sergipe`, RelatorioController.getCountSergipe);
 routes.get(`${BASE_URL_V1}/sergipe/filtro`, RelatorioController.getCountSergipeByPeriod);
 
@@ -30,7 +32,13 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
-// chamar essa rota no front ao fazer login (apenas no primeiro login ou checar se o ip já existe no banco)
+/* V2 Routes */
+// chamar essa rota no front ao fazer login (checa se o ip já existe no banco)
 routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
+
+routes.post(`${BASE_URL_V2}/register`, AuthController.createUser);
+routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin);
+// rota privada, tornar todas as anteriores (V1) como privadas
+routes.get(`${BASE_URL_V2}/user`, AuthController.checkToken, AuthController.getUser);
 
 export { routes };

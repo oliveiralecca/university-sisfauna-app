@@ -13,7 +13,7 @@ export class RelatorioService implements IRelatorioService {
 
   async getCountSergipe() {
     try {
-      return await prisma.relatorio.count({
+      return await prisma.reports.count({
         where: {
           estado: 'SERGIPE',
         }
@@ -37,7 +37,7 @@ export class RelatorioService implements IRelatorioService {
         return;
       }
 
-      const result = await prisma.relatorio.count({
+      const result = await prisma.reports.count({
         where: {
           AND: [
             { estado: 'SERGIPE' },
@@ -62,7 +62,7 @@ export class RelatorioService implements IRelatorioService {
 
   async getCountActive() {
     try {
-      return await prisma.relatorio.count({
+      return await prisma.reports.count({
         where: {
           situacao_cadastral: 'Ativa',
         }
@@ -77,7 +77,7 @@ export class RelatorioService implements IRelatorioService {
   async getClasses() {
     try {
       const classes: string[] = [];
-      const result = await prisma.relatorio.findMany({
+      const result = await prisma.reports.findMany({
         select: {
           classe: true,
         },
@@ -97,7 +97,7 @@ export class RelatorioService implements IRelatorioService {
   async getEstados() {
     try {
       const estados: string[] = [];
-      const result = await prisma.relatorio.findMany({
+      const result = await prisma.reports.findMany({
         select: {
           estado: true,
         },
@@ -117,7 +117,7 @@ export class RelatorioService implements IRelatorioService {
   async getMunicipios() {
     try {
       const municipios: string[] = [];
-      const result = await prisma.relatorio.findMany({
+      const result = await prisma.reports.findMany({
         select: {
           municipio: true,
         },
@@ -140,7 +140,7 @@ export class RelatorioService implements IRelatorioService {
   async getNomesPopulares() {
     try {
       const nomesPopulares: string[] = [];
-      const result = await prisma.relatorio.findMany({
+      const result = await prisma.reports.findMany({
         select: {
           nome_popular: true,
         },
@@ -159,7 +159,7 @@ export class RelatorioService implements IRelatorioService {
 
   async getActivity() {
     try {
-      const result = await prisma.relatorio.groupBy({
+      const result = await prisma.reports.groupBy({
         by: ['categoria_de_atividade'],
         _count: {
           categoria_de_atividade: true
@@ -189,7 +189,7 @@ export class RelatorioService implements IRelatorioService {
   async getDetails() {
     try {
       const detalhes: {id: number; detalhe: string}[] = [];
-      const result = await prisma.relatorio.findMany({
+      const result = await prisma.reports.findMany({
         select: {
           detalhe: true,
         },
@@ -210,7 +210,7 @@ export class RelatorioService implements IRelatorioService {
   async get50Obitos() {
     try {
       const nomesPopulares: {id: number; nome_popular: string}[] = [];
-      const result = await prisma.relatorio.groupBy({
+      const result = await prisma.reports.groupBy({
         by: ['nome_popular'],
         where: {
           obitos: {
@@ -236,7 +236,7 @@ export class RelatorioService implements IRelatorioService {
   async getOrdemAnimal() {
     try {
       const ordemEncontrada: { _id: string; count: number; }[] = [];
-      const result = await prisma.relatorio.aggregateRaw({
+      const result = await prisma.reports.aggregateRaw({
         pipeline: [
           { $group: { _id: '$ordem', count: { $sum: 1 } } },
           { $sort: { count: -1 } },
