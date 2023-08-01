@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model relatorio {
+model reports {
   id                             String @id @default(auto()) @map("_id") @db.ObjectId
   abates                         Int
   ano                            Int
@@ -48,7 +48,7 @@ model relatorio {
   vendas                         Int
 }
 
-model location {
+model locations {
   id                             String @id @default(auto()) @map("_id") @db.ObjectId
   ip                             String
   network                        String
@@ -78,4 +78,11 @@ model location {
   asn                            String
   org                            String
   error                          Boolean?
+}
+
+model users {
+  id                             String @id @default(auto()) @map("_id") @db.ObjectId
+  name                           String
+  email                          String @unique
+  password                       String
 }
