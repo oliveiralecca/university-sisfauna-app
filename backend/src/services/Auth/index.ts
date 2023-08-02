@@ -118,7 +118,7 @@ export class AuthService implements IAuthService {
       const secret = process.env.SECRET_KEY!;
       const token = jwt.sign({ id: user.id }, secret);
     
-      return token;    
+      return { token, user };    
     } catch (e) {
       console.error(e);
     } finally {

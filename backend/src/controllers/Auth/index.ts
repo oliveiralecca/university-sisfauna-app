@@ -58,7 +58,15 @@ export const AuthController = {
         return res.status(400).send({ error: auth.errors['wrongPassword'].message });
       }
 
-      return res.json({ message: 'Login realizado com sucesso', token: login });
+      return res.json({ 
+        message: 'Login realizado com sucesso', 
+        user: { 
+          id: login?.user.id, 
+          name: login?.user.name, 
+          email: login?.user.email 
+        }, 
+        token: login?.token 
+      });
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
