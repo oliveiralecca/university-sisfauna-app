@@ -17,6 +17,13 @@ export class AuthService implements IAuthService {
 
   async createUser(name: string, email: string, password: string, confirmPassword: string) {
     try {
+      if (!name && !email && !password && !confirmPassword) {
+        this.errors['invalidData'] = {
+          message: 'Dados obrigatórios não informados'
+        };
+        return;
+      }
+
       if (!name) {
         this.errors['invalidName'] = {
           message: 'O nome é obrigatório'
