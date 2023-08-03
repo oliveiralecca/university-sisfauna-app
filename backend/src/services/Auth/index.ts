@@ -154,40 +154,4 @@ export class AuthService implements IAuthService {
       await prisma.$disconnect();
     }
   }
-
-  // TODO: just for test
-  async getUser(id: string) {
-    try {
-      if (!id) {
-        this.errors['invalidUserId'] = {
-          message: 'O id do usuário é obrigatório'
-        };
-        return;
-      }
-
-      const user = await prisma.users.findUnique({
-        where: {
-          id
-        },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-        }
-      })
-
-      if (!user) {
-        this.errors['invalidUser'] = {
-          message: 'Usuário não encontrado'
-        };
-        return;
-      }
-    
-      return user;    
-    } catch (e) {
-      console.error(e);
-    } finally {
-      await prisma.$disconnect();
-    }
-  }
 }

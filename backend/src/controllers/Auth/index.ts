@@ -95,26 +95,4 @@ export const AuthController = {
       return res.status(400).send({ error: e.message });
     }
   },
-
-  // TODO: just for test
-  async getUser(req: Request, res: Response) {
-    const auth = new AuthService();
-
-    try {
-      const { id } = req.query;
-      const user = await auth.getUser(id as string); 
-
-      if (Object.keys(auth.errors).length && auth.errors['invalidUserId']) {
-        return res.status(400).send({ error: auth.errors['invalidUserId'].message });
-      }
-
-      if (Object.keys(auth.errors).length && auth.errors['invalidUser']) {
-        return res.status(400).send({ error: auth.errors['invalidUser'].message });
-      }
-
-      return res.json(user);
-    } catch (e: any) {
-      return res.status(400).send({ error: e.message });
-    }
-  },
 }

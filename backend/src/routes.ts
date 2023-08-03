@@ -2,7 +2,6 @@ import { Router } from "express";
 import { RelatorioController } from "./controllers/Relatorio";
 import { LocationController } from "./controllers/Location";
 
-import { getClientIp } from 'request-ip';
 import { AuthController } from "./controllers/Auth";
 
 const routes = Router();
@@ -32,13 +31,31 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
-/* V2 Routes */
-// chamar essa rota no front ao fazer login (checa se o ip já existe no banco)
+/* V2 Routes -> with authentication */
 routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
 
 routes.post(`${BASE_URL_V2}/register`, AuthController.createUser);
 routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin);
-// rota privada, tornar todas as anteriores (V1) como privadas
-routes.get(`${BASE_URL_V2}/user`, AuthController.checkToken, AuthController.getUser);
+
+routes.get(`${BASE_URL_V2}/sergipe`, AuthController.checkToken, RelatorioController.getCountSergipe);
+routes.get(`${BASE_URL_V2}/sergipe/filtro`, AuthController.checkToken, RelatorioController.getCountSergipeByPeriod);
+
+routes.get(`${BASE_URL_V2}/ativas`, AuthController.checkToken, RelatorioController.getCountActive);
+
+routes.get(`${BASE_URL_V2}/classes`, AuthController.checkToken, RelatorioController.getClasses);
+
+routes.get(`${BASE_URL_V2}/estados`, AuthController.checkToken, RelatorioController.getEstados);
+
+routes.get(`${BASE_URL_V2}/municipios`, AuthController.checkToken, RelatorioController.getMunicipios);
+
+routes.get(`${BASE_URL_V2}/nomespopulares`, AuthController.checkToken, RelatorioController.getNomesPopulares);
+
+routes.get(`${BASE_URL_V2}/atividade`, AuthController.checkToken, RelatorioController.getActivity);
+
+routes.get(`${BASE_URL_V2}/detalhes`, AuthController.checkToken, RelatorioController.getDetails);
+
+routes.get(`${BASE_URL_V2}/obitos`, AuthController.checkToken, RelatorioController.get50Obitos);
+
+routes.get(`${BASE_URL_V2}/ordemanimal`, AuthController.checkToken, RelatorioController.getOrdemAnimal);
 
 export { routes };
