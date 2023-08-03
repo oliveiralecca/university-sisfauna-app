@@ -9,6 +9,10 @@ export const AuthController = {
       const { name, email, password, confirmPassword } = req.body;
       const register = await auth.createUser(name, email, password, confirmPassword); 
 
+      if (Object.keys(auth.errors).length && auth.errors['invalidData']) {
+        return res.status(400).send({ error: auth.errors['invalidData'].message });
+      }
+
       if (Object.keys(auth.errors).length && auth.errors['invalidName']) {
         return res.status(400).send({ error: auth.errors['invalidName'].message });
       }
