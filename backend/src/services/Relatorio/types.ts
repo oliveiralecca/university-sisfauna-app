@@ -1,12 +1,13 @@
 export interface IRelatorioService {
+  getEstados(): void; 
+  getAnos(): void;
+
   getCountSergipe(): void;
   getCountSergipeByPeriod(inicio: number, fim: number): void;
 
   getCountActive(): void;
 
   getClasses(): void;
-
-  getEstados(): void;
 
   getMunicipios(): void;
 

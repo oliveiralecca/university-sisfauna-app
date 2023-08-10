@@ -32,19 +32,22 @@ routes.get(`${BASE_URL_V1}/obitos`, RelatorioController.get50Obitos);
 routes.get(`${BASE_URL_V1}/ordemanimal`, RelatorioController.getOrdemAnimal);
 
 /* V2 Routes -> with authentication */
-routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
+routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation); // OK -> usando na V2
+// falta implementar o get
 
-routes.post(`${BASE_URL_V2}/register`, AuthController.createUser);
-routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin);
+routes.post(`${BASE_URL_V2}/register`, AuthController.createUser); // OK -> usando na V2
+routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin); // OK -> usando na V2
 
+routes.get(`${BASE_URL_V2}/estados`, AuthController.checkToken, RelatorioController.getEstados); // OK -> usando na V2
+routes.get(`${BASE_URL_V2}/anos`, AuthController.checkToken, RelatorioController.getAnos); // OK -> usando na V2
+
+// reformular daqui para baixo -> aplicar filtros
 routes.get(`${BASE_URL_V2}/sergipe`, AuthController.checkToken, RelatorioController.getCountSergipe);
 routes.get(`${BASE_URL_V2}/sergipe/filtro`, AuthController.checkToken, RelatorioController.getCountSergipeByPeriod);
 
 routes.get(`${BASE_URL_V2}/ativas`, AuthController.checkToken, RelatorioController.getCountActive);
 
 routes.get(`${BASE_URL_V2}/classes`, AuthController.checkToken, RelatorioController.getClasses);
-
-routes.get(`${BASE_URL_V2}/estados`, AuthController.checkToken, RelatorioController.getEstados);
 
 routes.get(`${BASE_URL_V2}/municipios`, AuthController.checkToken, RelatorioController.getMunicipios);
 

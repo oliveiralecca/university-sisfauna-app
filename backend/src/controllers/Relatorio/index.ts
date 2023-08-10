@@ -2,6 +2,28 @@ import { Request, Response } from "express";
 import { RelatorioService } from "../../services/Relatorio";
 
 export const RelatorioController = {
+  async getEstados(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const estados = await relatorio.getEstados(); 
+      return res.json(estados);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
+  async getAnos(req: Request, res: Response) {
+    const relatorio = new RelatorioService();
+
+    try {
+      const anos = await relatorio.getAnos(); 
+      return res.json(anos);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
+  },
+
   async getCountSergipe(req: Request, res: Response) {
     const relatorio = new RelatorioService();
 
@@ -47,17 +69,6 @@ export const RelatorioController = {
     try {
       const classes = await relatorio.getClasses(); 
       return res.json(classes);
-    } catch (e: any) {
-      return res.status(400).send({ error: e.message });
-    }
-  },
-
-  async getEstados(req: Request, res: Response) {
-    const relatorio = new RelatorioService();
-
-    try {
-      const estados = await relatorio.getEstados(); 
-      return res.json(estados);
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
