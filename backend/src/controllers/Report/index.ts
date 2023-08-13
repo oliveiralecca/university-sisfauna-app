@@ -28,7 +28,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const countDelivery = await report.getCountReportDelivery(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -49,7 +49,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const countActive = await report.getCountActive(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -70,7 +70,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const classes = await report.getClasses(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -91,7 +91,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const births = await report.getBirths(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -112,7 +112,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const cities = await report.getCities(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -133,7 +133,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const acquired = await report.getAcquired(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -154,7 +154,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const reptiles = await report.getReptiles(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -175,7 +175,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const stolen = await report.getStolen(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -196,7 +196,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const deaths = await report.getDeaths(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
@@ -217,7 +217,7 @@ export const ReportController = {
     const report = new ReportService();
 
     try {
-      const { estado, ano_inicio, ano_fim } = req.body;
+      const { estado, ano_inicio, ano_fim } = req.params;
       const order = await report.getAnimalOrder(estado, Number(ano_inicio), Number(ano_fim)); 
 
       if (Object.keys(report.errors).length && report.errors['invalidData']) {
