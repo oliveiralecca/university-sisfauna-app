@@ -9,16 +9,16 @@ const routes = Router();
 const BASE_URL_V2 = '/api/v2';
 
 /* V2 Routes -> with authentication */
-routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation); // OK -> usando na V2
-// falta implementar o get
+routes.post(`${BASE_URL_V2}/location`, LocationController.postClientLocation);
+routes.get(`${BASE_URL_V2}/locations`, AuthController.checkToken, LocationController.getAllLocations);
 
-routes.post(`${BASE_URL_V2}/register`, AuthController.createUser); // OK -> usando na V2
-routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin); // OK -> usando na V2
+routes.post(`${BASE_URL_V2}/register`, AuthController.createUser);
+routes.post(`${BASE_URL_V2}/login`, AuthController.userLogin);
 
-routes.get(`${BASE_URL_V2}/estados`, AuthController.checkToken, ReportController.getStates); // OK -> usando na V2
-routes.get(`${BASE_URL_V2}/anos`, AuthController.checkToken, ReportController.getYears); // OK -> usando na V2
+routes.get(`${BASE_URL_V2}/estados`, AuthController.checkToken, ReportController.getStates);
+routes.get(`${BASE_URL_V2}/anos`, AuthController.checkToken, ReportController.getYears);
 
-routes.get(`${BASE_URL_V2}/entregarelatorio`, AuthController.checkToken, ReportController.getCountReportDelivery);
+routes.get(`${BASE_URL_V2}/entregarelatorio`, AuthController.checkToken, ReportController. getCountReportDelivery);
 
 routes.get(`${BASE_URL_V2}/ativas`, AuthController.checkToken, ReportController.getCountActive);
 

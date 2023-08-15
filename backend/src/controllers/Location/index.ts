@@ -28,5 +28,16 @@ export const LocationController = {
     } catch (e: any) {
       return res.status(400).send({ error: e.message });
     }
+  },
+
+  async getAllLocations(req: Request, res: Response) {
+    const location = new LocationService();
+
+    try {
+      const locations = await location.getAllLocations(); 
+      return res.json(locations);
+    } catch (e: any) {
+      return res.status(400).send({ error: e.message });
+    }
   }
 }

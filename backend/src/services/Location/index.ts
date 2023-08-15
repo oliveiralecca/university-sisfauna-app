@@ -58,4 +58,27 @@ export class LocationService implements ILocationService {
       await prisma.$disconnect();
     }
   }
+
+  async getAllLocations() {
+    try {
+      const locations = await prisma.locations.findMany({
+        select: {
+          city: true,
+          latitude: true,
+          longitude: true,
+        },
+        distinct: ['latitude', 'longitude']
+      });
+
+      if (!locations.length) {
+        return "Nenhuma localização registrada";
+      }
+
+      return locations;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
 }
