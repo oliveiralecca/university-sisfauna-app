@@ -1,37 +1,33 @@
 # 📝 Documentação
-Utilização dos endpoints.
+Utilização dos endpoints. Todos eles têm filtro de estado e de anos – sendo o inicial obrigatório, e o final, caso não seja passado, será considerado o último disponível no banco de dados.
 
 ## 🔁 Rotas
-1. Consulta à quantidade de pessoas jurídicas que entregaram o relatório em Sergipe.
-    - Total:
-      - [GET] ```/api/v1/sergipe```
-    - Por intervalo de anos:
-      - [GET] ```/api/v1/sergipe/filtro?{ano_inicial}&{ano_final}```
+1. Consulta à quantidade de pessoas jurídicas que entregaram o relatório.
+    - [GET] ```/api/v2/entregarelatorio?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-2. Consulta à quantidade de empresas com situação cadastral ativa.
-    - Total:
-      - [GET] ```/api/v1/ativas```
+2. Consulta à quantidade de pessoas jurídicas com situação cadastral ativa.
+    - [GET] ```/api/v2/ativas?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-3. Consulta às classes de animais existentes no banco.
-    - [GET] ```/api/v1/classes```
+3. Consulta à quantidade de animais por classe.
+    - [GET] ```/api/v2/classes?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-4. Consulta aos estados que fazem parte do Sisfauna.
-    - [GET] ```/api/v1/estados```
+4. Consulta ao animal que teve o maior número de nascimentos e à quantidade desses nascimentos.
+    - [GET] ```/api/v2/nascimentos?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-5. Consulta aos municípios presentes no banco e sua quantidade.
-    - [GET] ```/api/v1/municipios```
+5. Consulta aos municípios que entregaram o relatório.
+    - [GET] ```/api/v2/municipios?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-6. Consulta aos nomes populares de animais existentes no banco.
-    - [GET] ```/api/v1/nomespopulares```
+6. Consulta ao animal que foi mais adquirido e à quantidade dessas aquisições.
+    - [GET] ```/api/v2/aquisicoes?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-7. Consulta à categoria de atividade que mais aparece no banco e a sua quantidade.
-    - [GET] ```/api/v1/atividade```
+7. Consulta à quantidade de répteis machos e fêmeas.
+    - [GET] ```/api/v2/repteis?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-8. Consulta aos detalhes que são informados no banco.
-    - [GET] ```/api/v1/detalhes```
+8. Consulta ao animais que foram furtados ou roubados e suas quantidades.
+    - [GET] ```/api/v2/furtados?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-9. Consulta aos nomes populares dos animais que tiveram óbitos igual a 50.
-    - [GET] ```/api/v1/50obitos```
+9. Consulta ao animal que teve o maior número de óbitos e à quantidade desses óbitos.
+    - [GET] ```/api/v2/obitos?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
 
-10. Consulta à ordem de animal que mais aparece no banco e a sua quantidade.
-    - [GET] ```/api/v1/ordemanimal```
+10. Consulta à quantidade de animais por ordem animal.
+    - [GET] ```/api/v2/ordemanimal?estado={estado}&ano_inicio={ano_inicio}&ano_fim={ano_fim}```
