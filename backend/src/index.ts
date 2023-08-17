@@ -9,14 +9,20 @@ const PORT = process.env.PORT || 3333;
 
 const prisma = new PrismaClient();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://sisfauna-app.vercel.app/",
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use(express.json());
 app.use(routes);
 
 const connectDB = async () => {
   try {
     await prisma.$connect();
-    console.info('Conectado ao banco de dados');
+    console.info("Conectado ao banco de dados");
   } catch (e) {
     console.error(e);
   }
@@ -24,6 +30,6 @@ const connectDB = async () => {
 
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.info(`Aplicação rodando na porta ${PORT}`)
+    console.info(`Aplicação rodando na porta ${PORT}`);
   });
 });
