@@ -14,7 +14,7 @@ export function Form({ type }: FormProps) {
         <h2>Bem-vindo ao Sisfauna</h2>
         <div>
           {type === 'register' ? 'Já tem conta?' : 'Não tem conta? '}
-          {type === 'register' ? <Link to="/">Entrar</Link> : <Link to="/registrar">Registrar</Link>}
+          {type === 'register' ? <Link to="/signin">Entrar</Link> : <Link to="/registrar">Registrar</Link>}
         </div>
       </S.Header>
       <S.Title>
