@@ -12,8 +12,8 @@ const prisma = new PrismaClient();
 app.use(
   cors({
     origin: "*",
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Origin"],
+    allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 app.use(express.json());
