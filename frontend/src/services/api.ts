@@ -3,6 +3,9 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const api = axios.create({
   baseURL: "https://sisfauna-api.onrender.com",
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("@sisfauna:token")}`,
+  }
 });
 
 const API_V2 = "/api/v2";
