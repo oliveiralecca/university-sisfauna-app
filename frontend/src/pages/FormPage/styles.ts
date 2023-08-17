@@ -59,7 +59,7 @@ export const LoginCard = styled.div`
   width: 40%;
   max-width: 500px;
   height: 75%;
-  max-height: 650px;
+  max-height: fit-content;
 
   padding: 40px 35px;
 
