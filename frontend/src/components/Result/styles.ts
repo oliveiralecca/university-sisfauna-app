@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ dataType: string }>`
-  font-size: ${({ dataType }) => (dataType === "number" ? "60px" : "inherit")};
+export const Container = styled.div<{ $checktype: string }>`
+  font-size: ${({ $checktype }) => ($checktype === "number" ? "60px" : "inherit")};
 `;

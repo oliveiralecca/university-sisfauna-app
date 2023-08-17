@@ -97,6 +97,8 @@ export function Dashboard() {
   }, [statesResponse, yearsResponse]);
 
   useEffect(() => {
+    const loc: Data[] = [];
+
     if (locationsResponse.length) {
       const locationsCount = locationsResponse?.reduce(
         (acc: { [key: string]: number }, location: { city: string }) => {
@@ -114,9 +116,7 @@ export function Dashboard() {
       );
 
       Object.entries(locationsCount).forEach(([name, value]) => {
-        const loc: Data[] = [];
         loc.push({ name, value: Number(value) });
-
         setLocationsData(loc);
       });
     }

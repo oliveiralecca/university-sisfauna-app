@@ -335,7 +335,7 @@ export type ResultProps = {
 // TODO: pensar na estrutura da exposição dos dados, considerando que alguns retornos são diferentes (acima)
 export function Result({ data }: ResultProps) {
   return (
-    <S.Container dataType={typeof data}>
+    <S.Container $checktype={typeof data}>
       {JSON.stringify(data)}
     </S.Container>
   );

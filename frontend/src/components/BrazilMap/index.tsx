@@ -52,7 +52,7 @@ export function BrazilMap() {
         }
       </Geographies>
       {mapData?.map(({ name, coordinates }) => (
-        <Marker key={name} coordinates={coordinates}>
+        <Marker key={`${name}-${coordinates[0]}`} coordinates={coordinates}>
           <circle r={8} fill="#F00" stroke="#fff" strokeWidth={4} />
         </Marker>
       ))}
