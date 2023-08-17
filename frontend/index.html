@@ -3,7 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="/src/assets/icons/favicon.ico" type="image/x-icon" />
     <title>Sisfauna App</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #9DC08B;
+        color: #40513B;
+
+        height: fit-content;
+        min-height: 100vh;        
+      }
+
+      body, input, button, textarea {
+        font-family: "Poppins", sans-serif;
+        --webkit-font-smoothing: antialiased;
+      }
+
+      #root {
+        height: fit-content;
+        min-height: 100vh;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: #9DC08B;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 8px;        
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: #40513B;
+        border-radius: 6px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
