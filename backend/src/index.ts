@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 app.use(
   cors({
     origin: "*",
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
