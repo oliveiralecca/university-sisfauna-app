@@ -75,5 +75,8 @@ export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error">>`
     overflow: hidden;
     word-break: break-word;
     text-overflow: ellipsis;
+
+    width: 100%;
+    text-align: center;
   }
 `;

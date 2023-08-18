@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Box } from "../../components/Box";
 import { BrazilMap } from "../../components/BrazilMap";
@@ -29,6 +29,11 @@ export function Dashboard() {
     statesResponse,
     yearsResponse,
   } = useDataContext();
+
+  const category = useMemo(
+    () => currentBoxValue.categoria.value,
+    [currentBoxValue.categoria.value]
+  );
 
   const onFetchData = useCallback(() => {
     const hasSelectedCategory = Object.values(currentBoxValue.categoria).every(
@@ -192,7 +197,7 @@ export function Dashboard() {
           </S.ButtonContainer>
 
           <Box size="l" title="Resultado" boxId="resultado">
-            {loading ? <Loader /> : <Result data={data} />}
+            {loading ? <Loader /> : <Result data={data} category={category} />}
           </Box>
           <Box size="l" title="Acessos por localização" boxId="localizacao">
             {emptyLocations ? (

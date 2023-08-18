@@ -73,7 +73,7 @@ type DataProviderProps = {
 const DataContext = createContext<DataState | null>(null);
 
 function DataProvider({ children }: DataProviderProps) {
-  const [data, setData] = useState<any>("");
+  const [data, setData] = useState<any>([]);
   const [statesResponse, setStatesResponse] = useState([]);
   const [yearsResponse, setYearsResponse] = useState([]);
   const [locationsResponse, setLocationsResponse] = useState([]);
@@ -108,7 +108,7 @@ function DataProvider({ children }: DataProviderProps) {
   function responseTreatment(response: any) {
     if (response.status === 400) {
       setLoading(false);
-      setError(response.data.error); // TODO: usar esse error na caixa de respostas
+      setError(response.data.error);
       return;
     }
 
