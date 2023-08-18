@@ -230,7 +230,7 @@ export function Result({ data, category }: ResultProps) {
               <Fragment key={generateKey(d)}>
                 <p>{nomePopular}</p>
                 <p>
-                  {(nascimentos && "Nascimento: ") ||
+                  {(nascimentos && "Nascimentos: ") ||
                     (aquisicoes && "Aquisições: ") ||
                     (obitos && "Óbitos: ")}
                   {nascimentos || aquisicoes || obitos}
