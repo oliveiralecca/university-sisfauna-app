@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 app.use(
   cors({
     origin: "*",
-    allowedHeaders: ["Content-Type", "Authorization", "Origin", "X-Api-Key", "X-Requested-With", "Accept"],
+    allowedHeaders: ["Content-Type", "Authorization", "Origin", "X-Api-Key", "X-Requested-With", "Accept", "Append", "Delete", "Entries", "ForEach", "Get", "Has", "Keys", "Set", "Values"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
