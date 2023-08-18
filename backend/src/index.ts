@@ -9,12 +9,21 @@ const PORT = process.env.PORT || 3333;
 
 const prisma = new PrismaClient();
 
+app.options("*", cors());
 app.use(
   cors({
-    origin: "*",
-    allowedHeaders: ["Content-Type", "Authorization", "Origin", "X-Api-Key", "X-Requested-With", "Accept", "Append", "Delete", "Entries", "ForEach", "Get", "Has", "Keys", "Set", "Values"],
+    origin: "http://localhost:5173",
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Origin",
+      "X-Api-Key",
+      "X-Requested-With",
+      "Accept",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    preflightContinue: true,
   })
 );
 app.use(express.json());
