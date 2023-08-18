@@ -24,6 +24,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     preflightContinue: true,
+    optionsSuccessStatus: 200,
   })
 );
 app.use(express.json());
