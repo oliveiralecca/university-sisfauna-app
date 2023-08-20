@@ -2,7 +2,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const api = axios.create({
-  baseURL: "https://sisfauna-api.onrender.com",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     Authorization: `Bearer ${localStorage.getItem("@sisfauna:token")}`,
   }
