@@ -14,7 +14,7 @@ const prisma = new PrismaClient();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://sisfauna-app.vercel.app/",
     allowedHeaders: [
       "Content-Type",
       "Authorization",
