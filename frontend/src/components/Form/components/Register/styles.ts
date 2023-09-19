@@ -32,6 +32,16 @@ export const FormContainer = styled.form`
       cursor: not-allowed;
     }
   }
+
+  @media (max-width: 480px) {
+    padding-top: 5px;
+    gap: 10px;
+
+    button {
+      height: 40px;
+      margin-top: 20px;
+    }
+  }
 `;
 
 export const Field = styled.div`
@@ -66,6 +76,12 @@ export const Field = styled.div`
     font-size: 14px;
     font-weight: 300;
   }
+
+  @media (max-width: 480px) {
+    input {
+      height: 40px;
+    }
+  }
 `;
 
 export const GroupField = styled.div`
@@ -82,6 +98,10 @@ export const Error = styled.p`
   justify-content: center;
 
   color: red;   
+
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
 `;
 
 export const Success = styled.div`
@@ -99,5 +119,11 @@ export const Success = styled.div`
   svg {
     width: 70px;
     height: 70px;
+  }
+
+  @media (max-width: 480px) {
+    height: fit-content;
+    text-align: center;
+    margin-top: 25px;
   }
 `;

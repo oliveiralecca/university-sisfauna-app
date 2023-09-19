@@ -28,16 +28,27 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
       }
-
-      & > .recharts-responsive-container {
-        /* width: fit-content !important;
-        height: fit-content !important; */
-      }
     }
   }
 
   & > :nth-child(4) > :last-child {
     max-height: inherit;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0;
+
+    & > :last-child {
+      height: fit-content;
+    }
+
+    & > :last-child > :last-child {
+      span {
+        & > :last-child {
+          display: none;
+        }
+      }
+    }
   }
 `;
 
@@ -45,6 +56,14 @@ export const Filters = styled.div`
   display: flex;
   flex: 1;
   gap: 20px;
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+
+    div:first-child {
+      flex: 100%;
+    }   
+  }
 `;
 
 export const ButtonContainer = styled.div<{ disabled: boolean }>`
@@ -84,6 +103,12 @@ export const ButtonContainer = styled.div<{ disabled: boolean }>`
       background: #609966;
       pointer-events: none;
     }
+  }
+
+  @media (max-width: 480px) {
+    a {
+      width: 100%;
+    }    
   }
 `;
 

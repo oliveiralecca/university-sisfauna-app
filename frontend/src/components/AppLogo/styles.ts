@@ -14,4 +14,8 @@ export const Logo = styled.div`
     font-size: 20px;
     font-weight: 600;
   }
+
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 `;

@@ -19,8 +19,8 @@ export function NavBar() {
 
       <S.Navigation>
         <Link to="/home" className={path === 'home' ? 'active' : ''}>Dashboard</Link>
-        <Link to="/sobre" className={path === 'sobre' ? 'active' : ''}>Sobre o projeto</Link>
-        <Link to="/contato" className={path === 'contato' ? 'active' : ''}>Contato</Link>
+        {/* <Link to="/sobre" className={path === 'sobre' ? 'active' : ''}>Sobre o projeto</Link> */}
+        {/* <Link to="/contato" className={path === 'contato' ? 'active' : ''}>Contato</Link> */}
       </S.Navigation>
 
       <S.UserContent>

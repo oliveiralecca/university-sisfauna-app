@@ -15,6 +15,10 @@ export const TextData = styled.div`
   align-items: center;
 
   font-size: 50px;
+
+  @media (max-width: 480px) {
+    font-size: 30px;
+  }
 `;
 
 export const CitiesData = styled.div`

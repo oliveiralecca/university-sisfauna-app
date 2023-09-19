@@ -8,6 +8,11 @@ export const Container = styled.div`
   justify-content: center;
 
   position: relative;
+
+  @media (max-width: 480px) {
+    margin: 0 25px;
+    display: block;
+  }
 `;
 
 export const Left = styled.div`
@@ -29,6 +34,17 @@ export const Left = styled.div`
 
   a {
     color: transparent;
+  }
+
+  @media (max-width: 480px) {
+    svg:nth-child(2), 
+    a {
+      display: none;
+    }
+
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 15px;
   }
 `;
 
@@ -53,6 +69,10 @@ export const Right = styled.div`
   a {
     color: transparent;
   }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 export const LoginCard = styled.div`
@@ -68,4 +88,13 @@ export const LoginCard = styled.div`
   box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.08);
 
   position: absolute;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 25px;
+    height: fit-content;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+  }
 `;

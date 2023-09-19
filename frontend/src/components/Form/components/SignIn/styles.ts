@@ -32,6 +32,16 @@ export const FormContainer = styled.form`
       cursor: not-allowed;
     }
   }
+
+  @media (max-width: 480px) {
+    padding-top: 15px;
+    gap: 20px;
+
+    button {
+      height: 40px;
+      margin-top: 10px;
+    }
+  }
 `;
 
 export const Field = styled.div`
@@ -65,6 +75,12 @@ export const Field = styled.div`
     font-size: 14px;
     font-weight: 300;
   }
+
+  @media (max-width: 480px) {
+    input {
+      height: 40px;
+    }
+  }
 `;
 
 export const Error = styled.p`
@@ -72,5 +88,9 @@ export const Error = styled.p`
   align-items: center;
   justify-content: center;
 
-  color: #FF0000;    
+  color: #FF0000;  
+  
+  @media (max-width: 480px) {
+    margin-top: 10px;
+  }
 `;

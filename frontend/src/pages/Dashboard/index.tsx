@@ -196,7 +196,7 @@ export function Dashboard() {
             />
           </S.ButtonContainer>
 
-          <Box size="l" title="Resultado" boxId="resultado">
+          <Box size="l" title="Resultado" boxId="resultado" $hasList={category === 'question_municipios'}>
             {loading ? <Loader /> : <Result data={data} category={category} />}
           </Box>
           <Box size="l" title="Acessos por localização" boxId="localizacao">

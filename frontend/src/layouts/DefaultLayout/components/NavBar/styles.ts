@@ -20,6 +20,12 @@ export const Container = styled.nav`
   & > div:first-of-type {
     cursor: pointer;
   }
+
+  @media (max-width: 480px) {
+    & > div:first-of-type h4 {
+      display: none;
+    }
+  }
 `;
 
 export const Navigation = styled.div`
@@ -51,4 +57,14 @@ export const UserContent = styled.div`
   gap: 15px;
 
   font-size: 16px;
+
+  @media (max-width: 480px) {
+    p {
+      display: none;
+    }
+
+    a {
+      font-size: 10px;
+    }
+  }
 `;

@@ -38,4 +38,8 @@ export const Select = styled.select`
     5px 5px,
     1px 1em;
   background-repeat: no-repeat;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;

@@ -37,6 +37,22 @@ export const Container = styled.div<Pick<BoxProps, "size">>`
   border-radius: 20px;
 
   padding: 20px;
+
+  @media (max-width: 480px) {
+    .recharts-wrapper {
+      svg {
+        width: 100%;
+      }
+
+      .recharts-legend-wrapper {
+        width: 100% !important;
+      }
+
+      .recharts-tooltip-wrapper {
+        display: none;
+      }
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -48,9 +64,17 @@ export const Header = styled.div`
     color: #40513b;
     font-weight: 600;
   }
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+
+    h3 {
+      font-size: 14px;
+    }
+  }
 `;
 
-export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error">>`
+export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error" | "$hasList">>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,6 +90,10 @@ export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error">>`
       font-size: 18px;
       border: 1px dotted ${$error ? "#FF0000" : "#9DC08B"};
       border-radius: 20px;
+
+      @media (max-width: 480px) {
+        font-size: 14px;
+      }
     `}
 
   span {
@@ -78,5 +106,21 @@ export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error">>`
 
     width: 100%;
     text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    ${({ $hasList }) =>
+    ($hasList) &&
+    css`
+      span > div > div {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-y: auto;
+      }
+
+      span > div > div > p {
+        width: 100%;
+      }
+    `}  
   }
 `;

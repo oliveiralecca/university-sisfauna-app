@@ -32,6 +32,18 @@ export const Header = styled.div`
       color: #609966;
     }
   }
+
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    row-gap: 5px;
+
+    div {
+      flex-direction: row;
+      column-gap: 8px;
+      width: 100%;
+      padding-right: 9px;
+    }
+  }
 `;
 
 export const Title = styled.div`
@@ -42,4 +54,11 @@ export const Title = styled.div`
   width: fit-content;
   margin-top: -3px;
   margin-left: -2px;
+
+  @media (max-width: 480px) {
+    align-self: center;
+    margin: 0;
+    margin-top: 15px;
+    font-size: 30px;
+  }
 `;
