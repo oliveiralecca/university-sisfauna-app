@@ -51,6 +51,10 @@ export const Container = styled.div<Pick<BoxProps, "size">>`
       .recharts-tooltip-wrapper {
         display: none;
       }
+
+      .recharts-tooltip-cursor {
+        display: none;
+      }
     }
   }
 `;
@@ -112,6 +116,10 @@ export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error" | "$has
     ${({ $hasList }) =>
     ($hasList) &&
     css`
+      span, span > div {
+        height: 100%;
+      }
+
       span > div > div {
         flex-wrap: nowrap;
         justify-content: flex-start;
