@@ -97,4 +97,8 @@ export const LoginCard = styled.div`
     position: relative;
     display: inline-block;
   }
+
+  @media (min-width: 992px) and (max-width: 1200px) {
+    height: fit-content;
+  }
 `;
