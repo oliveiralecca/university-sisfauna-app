@@ -57,6 +57,26 @@ export const Container = styled.div<Pick<BoxProps, "size">>`
       }
     }
   }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    .recharts-wrapper {
+      svg {
+        width: 100%;
+      }
+
+      .recharts-legend-wrapper {
+        width: 100% !important;
+      }
+
+      .recharts-tooltip-wrapper {
+        display: none;
+      }
+
+      .recharts-tooltip-cursor {
+        display: none;
+      }
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -130,5 +150,22 @@ export const Content = styled.div<Pick<BoxProps, "$hasSelect" | "$error" | "$has
         width: 100%;
       }
     `}  
+  }
+
+  @media (min-width: 481px) and (max-width: 2300px) {
+    ${({ $hasList }) =>
+    ($hasList) &&
+    css`
+      span, span > div {
+        height: 100%;
+      }
+
+      span > div > div {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        overflow: auto;
+        padding-bottom: 10px;
+      }
+    `} 
   }
 `;

@@ -50,6 +50,22 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (min-width: 481px) and (max-width: 1164px) {
+    padding: 0;
+
+    & > :last-child {
+      height: fit-content;
+    }
+
+    & > :last-child > :last-child {
+      span {
+        & > :last-child {
+          display: none;
+        }
+      }
+    }
+  }
 `;
 
 export const Filters = styled.div`
@@ -63,6 +79,14 @@ export const Filters = styled.div`
     div:first-child {
       flex: 100%;
     }   
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    } 
   }
 `;
 
@@ -109,6 +133,12 @@ export const ButtonContainer = styled.div<{ disabled: boolean }>`
     a {
       width: 100%;
     }    
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    a {
+      width: 100%;
+    }
   }
 `;
 
