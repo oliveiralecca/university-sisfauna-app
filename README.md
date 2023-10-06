@@ -1,8 +1,6 @@
 <div align="center" id="top"> 
   <img width="70" height="70" src="./.github/app.png" alt="Sisfauna App Logo" />
 
-  &#xa0;
-
   <a href="https://sisfauna-app.vercel.app/signin">Demo</a>
 </div>
 
