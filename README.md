@@ -1,12 +1,12 @@
-<!-- <div align="center" id="top"> 
-  <img src="./.github/app.gif" alt="University Sisfauna App" />
+<div align="center" id="top"> 
+  <img width="70" height="70" src="./.github/app.png" alt="Sisfauna App Logo" />
 
   &#xa0;
 
-  <!-- <a href="https://universitysisfaunaapp.netlify.app">Demo</a>
-</div> -->
+  <a href="https://sisfauna-app.vercel.app/signin">Demo</a>
+</div>
 
-<h1 align="center">University Sisfauna App</h1>
+<h1 align="center">Sisfauna App</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/oliveiralecca/university-sisfauna-app?color=56BEB8">
@@ -14,21 +14,14 @@
   <img alt="Github language count" src="https://img.shields.io/github/languages/count/oliveiralecca/university-sisfauna-app?color=56BEB8">
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/oliveiralecca/university-sisfauna-app?color=56BEB8">
-
-  <img alt="License" src="https://img.shields.io/github/license/oliveiralecca/university-sisfauna-app?color=56BEB8">
-
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/oliveiralecca/university-sisfauna-app?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/oliveiralecca/university-sisfauna-app?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/oliveiralecca/university-sisfauna-app?color=56BEB8" /> -->
 </p>
 
-<!-- Status -->
+<!-- Status 
 
 <h4 align="center"> 
 	🚧  University Sisfauna App 🚀 Under construction...  🚧
 </h4> 
+-->
 
 <hr>
 
@@ -44,29 +37,34 @@
 
 <br>
 
+<img src="./.github/screenshot.png" alt="Sisfauna App Screen" />
+
 ## :dart: About ##
 
-coming soon...
+This project was developed with the goal of practicing web development technologies and concepts. It was an evaluation of the Web Programming subject.   It is a web application about a Brazilian open source dataset that allows the user to choice some questions and filter them by state and years. 
 
 ## :sparkles: Features ##
 
-coming soon...
-
-<!-- :heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3; -->
+:heavy_check_mark: User register on the open route;\
+:heavy_check_mark: User sign-in;\
+:heavy_check_mark: Some questions about the Sisfauna dataset;\
+:heavy_check_mark: Some data filters by states and years;\
+:heavy_check_mark: Data results with smart graphs;\
+:heavy_check_mark: Tracking and counting of user location;\
+:heavy_check_mark: Location results with map and graph
 
 ## :rocket: Technologies ##
 
-coming soon...
+The following tools were used in this project:
 
-<!-- The following tools were used in this project:
-
-- [Expo](https://expo.io/)
+- [Vite](https://vitejs.dev/)
 - [Node.js](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/) -->
+- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
+- [Prisma](https://www.prisma.io/)
+- [JWT](https://jwt.io/introduction)
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
 ## :white_check_mark: Requirements ##
 
@@ -74,27 +72,43 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ## :checkered_flag: Starting ##
 
-coming soon...
+Server
 
-<!-- ```bash
+```bash
 # Clone this project
 $ git clone https://github.com/oliveiralecca/university-sisfauna-app
 
 # Access
 $ cd university-sisfauna-app
+$ cd backend
 
 # Install dependencies
-$ yarn
+$ yarn or npm i
 
 # Run the project
-$ yarn start
+$ yarn dev:server or npm run dev:server
 
-# The server will initialize in the <http://localhost:3000>
-``` -->
+# The server will initialize in the <http://localhost:3333>
+# You will need your own DATABASE_URL and SECRET_KEY env variables
+```
 
-<!-- ## :memo: License ##
+Web
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file. -->
+```bash
+# Access
+$ cd university-sisfauna-app
+$ cd frontend
+
+# Install dependencies
+$ yarn or npm i
+
+# Run the project
+$ yarn dev or npm run dev
+
+# The project will initialize in the <http://localhost:5173>
+# You will need your own VITE_API_URL env variable with the backend URL 
+```
+
 
 &#xa0;
 
